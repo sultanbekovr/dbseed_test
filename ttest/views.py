@@ -10,6 +10,7 @@ from .models import ForTest
 class EmployeeView(ListAPIView):
     queryset = ForTest.objects.all()
     serializer_class = EmployeeSerializer
+    permission_classes = [permissions.AllowAny]
 
 class SearchView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
