@@ -12,12 +12,14 @@ class EmployeeView(ListAPIView):
     serializer_class = EmployeeSerializer
 
 class SearchView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     queryset = ForTest.objects.all()
     serializer_class = EmployeeSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', 'surname']
 
 class FilterView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     queryset = ForTest.objects.all()
     serializer_class = EmployeeSerializer
     filter_backends = [DjangoFilterBackend]
